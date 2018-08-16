@@ -11,6 +11,18 @@
 		{
 			$('body').text(`Hello users, I'm the body of this webpage`);
 		});
+
+		// Auto-executable function
+		(function()
+		{
+			var persona = {'nombre' : 'José', 'apellido': 'Urbina', 'edad': 25};
+
+			// showing persona object - p: represent each property of the object
+			for(var p in persona)
+			{
+				console.log(persona[p]);
+			}
+		})();
 	</script>
 </body>
 </html>
