@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQUERY PRACTICE</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Testing this o.o</h1>
+	<h1>Testing that o.-</h1>
+	<h1>Testing those -.o</h1>
+
+	<div id="textbox">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var phrase = "I love jQuery :)";
+
+			$('body').append(`<h2>${phrase}</h2>`);
+
+			$('h1:first').css({"color":'#FF2312', "border" : "1px dotted #892342" });
+			$('h1:last').css({'color':'#FFF', 'background-color': '#123442'});
+
+			// Assign to a variable a statement jqueyr of a <p> element
+			var newText = $('<p>');
+			// add a <h3> element to <p> element
+			newText.append('<h3>I just replaced something</h3>');
+			// Change the div body with a new text
+			$('#textbox').html(newText);
+		});
+	</script>
+</body>
+</html>

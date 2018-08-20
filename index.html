@@ -7,9 +7,16 @@
 </head>
 <body>
 	<script type="text/javascript">
-		$(document).ready(function()
-		{
-			$('body').text(`Hello users, I'm the body of this webpage`);
+		$(document).ready(function(){
+			var phrase = "I love jQuery :)";
+
+			$('body').append(`<h2>${phrase}</h2>`);
+
+			var h1 = document.createElement('h1');
+			h1.innerHTML = "GO AHEAD OVER THERE";
+
+			document.body.appendChild(h1);
+			//$('body').text("Hello World!!");
 		});
 
 		// Auto-executable function
