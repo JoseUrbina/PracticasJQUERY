@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<p class="text">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+	</p>
+
+	<p id="headerTop">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+	</p>
+
+	<p class="greenBorder">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+	</p>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('p').css('border', "1px dotted red");
+			$('#headerTop').css('border', '3px solid yellow');
+			$('.greenBorder').css('border', '2px dashed green');
+		});
+	</script>
+</body>
+</html>

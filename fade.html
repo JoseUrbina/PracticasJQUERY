@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<style type="text/css">
+		#textbox
+		{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		fadeIn : Showing with an effect
+		fadeOut: Hiding with an effect 
+	-->
+
+	<a href="#" id="fade-in">Fade In</a> |
+	<a href="#" id="fade-out">Fade Out</a>
+	<div id="textbox">
+		<p class="copyText">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>	
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>	
+	</div>
+
+	<script>
+		$(document).ready(function()
+		{
+			$('#fade-in').on('click',function(e)
+			{
+				$('#textbox').fadeIn(3000, function()
+				{
+					alert("Use fade In");
+				});
+			});
+
+			$('#fade-out').on('click', function(e){
+				$('#textbox').fadeOut('fast',function()
+					{
+						alert('User fade Out');
+					});
+			});
+		});	
+	</script>
+</body>
+</html>

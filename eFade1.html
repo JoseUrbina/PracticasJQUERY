@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fade's Example 1</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+		div
+		{
+			width:300px;
+			height: 300px;
+			margin:5px;
+			display:none;
+		}
+
+		#armchair
+		{
+			background: red;
+		}
+
+		#curtain
+		{
+			background: black;
+		}
+
+		#cushion
+		{
+			background: green;
+		}
+
+		#wardrobe
+		{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<span>Click me</span>
+	<div id="armchair"></div>
+	<div id="curtain"></div>
+	<div id="cushion"></div>
+	<div id="wardrobe"></div>
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('span').on('click', function(e)
+			{
+				$('div:hidden:first').fadeIn("slow");
+			});
+		});
+	</script>
+</body>
+</html>

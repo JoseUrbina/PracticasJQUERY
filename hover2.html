@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover Practice</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+		span
+		{
+			color: red;
+		}
+
+		li
+		{
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- effect *** in a field -->
+	<ul>
+		<li>Apple</li>
+		<li>Grape</li>
+		<li class="fade">Pear</li>
+		<li class="fade">Orange</li>
+	</ul>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			$('li').hover(hoverIn, hoverOut);
+
+			// when the mouse pointer is inside
+			function hoverIn()
+			{
+				var span = $('<span>');
+				span.html(" ***");
+
+				$(this).append(span);
+			}
+
+			// when the mouse pointer is outside
+			function hoverOut()
+			{
+				// find the first span into li, and removing
+				$(this).find('span:first').remove();
+			}
+
+			// if the li has the class fade does that
+			$('li.fade').hover(function(e){
+				// fade 3 times
+				for(var i = 0; i< 3; i++)
+				{			
+					// pause or interval with time
+					setTimeout(function()
+					{
+						$(this).fadeOut(100);
+						$(this).fadeIn(500);
+					}.bind(this), 2000);
+				}
+				
+			});
+		});
+
+	</script>
+</body>
+</html>

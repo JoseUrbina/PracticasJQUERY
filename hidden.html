@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<style type="text/css">
+		#imagen
+		{
+			border: 1px dotted #432365;
+			width: 200px;
+			height: 200px;
+		}
+
+		#container
+		{
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Example that showing the working about hide and show jQuery function -->
+
+	<div id="container">
+		<button id="btnShow">Show</button>
+		<button id="btnHide">Hide</button>
+	</div>	
+
+	<img id="imagen" src="img/imagen1.png" style="display: none;">
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var imagen = $('#imagen');
+
+			// $('#btnHide').attr('disabled',true);
+			// 
+			$('#btnHide').hide();
+
+			$('#btnShow').on('click', showImage);
+			$('#btnHide').on('click',hideImage);
+
+			function showImage()
+			{
+				imagen.show();
+				$('#btnShow').hide();
+				$('#btnHide').show();
+			}
+
+			function hideImage()
+			{
+				imagen.hide();
+				$('#btnShow').show();
+				$('#btnHide').hide();
+			}
+		});
+	</script>
+</body>
+</html>

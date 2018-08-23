@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fade</title>	
+	<style>
+	  p {
+	    position: relative;
+	    width: 400px;
+	    height: auto;
+	    clear:bottom;
+	  }
+
+	  div {
+	    position: absolute;
+	    width: 400px;
+	    height: 65px;
+	    font-size: 36px;
+	    text-align: center;
+	    color: yellow;
+	    background: red;
+	    padding-top: 25px;
+	    top: 0;
+	    left: 0;
+	    display: none;
+	  }
+
+	  span {
+	    display: none;
+	  }
+  </style>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<p>
+		Let it be known that the party of the first part
+  		and the party of the second part are henceforth
+  		and hereto directed to assess the allegations
+  		for factual correctness...<a href="#">Click</a><div><span>WARNING</span></div>
+  	</p>
+	<script>
+		$(function(){
+			$('a').on('click',function(e){
+				$('div').fadeIn(3000, function()
+				{
+						$('span').fadeIn("slow");
+				});				
+			});
+		});
+	</script>
+</body>
+</html>

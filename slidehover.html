@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+		#contenedor
+		{
+			position: relative;
+			display: table;
+		}
+
+		div.hover{
+			position:relative;
+			float: left;
+			width: 300px;
+			height: 300px;
+			margin: 5px;
+			background-color:#452389;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="contenedor">
+		<div class="hover"></div>
+		<div class="hover"></div>
+		<div class="hover"></div>
+		<div class="hover"></div>
+	</div>
+	<div style="clear:both;"></div>
+	
+	<button id="btnShow">Show</button>
+	<button id="btnHide">Hide</button>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btnShow').on('click', function(e)
+			{
+				// Select the first hidden div and doing slideDown
+				$('div.hover:hidden:first').slideDown("slow");
+			});
+
+			$('#btnHide').on('click', function(e)
+			{
+				// Select the last visible div and do this slideUp
+				var ultimoDIV = $('div.hover:visible:last');
+				
+				ultimoDIV.slideUp("slow");
+			})
+		});
+	</script>
+</body>
+</html>

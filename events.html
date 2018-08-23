@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<style type="text/css">
+		#textbox
+		{
+			weight: 150px;
+			height: 150px;
+			border: 1px solid black;
+			backgroud-color: aliceblue;
+		}
+
+		.newColor
+		{
+			Color: #F92384;
+		}
+	</style>
+</head>
+<body>
+	<div id="textbox">
+		
+	</div>
+
+	<script>
+		$(document).ready(function()
+		{
+			var textbox = $('#textbox');
+
+			textbox.on('click', whenMouseIsClicked);
+			textbox.on('mouseleave', whenMouseLeaves);
+
+			function whenMouseIsClicked()
+			{
+				textbox.html("<h1>You clicked Me</h1>");
+				//textbox.toggleClass("newColor");
+				
+				document.getElementById("textbox").classList.toggle("newColor");
+				//
+				/* if(textbox.hasClass("newColor"))
+				{
+					textbox.removeClass("newColor");
+				}
+				else
+				{
+					textbox.addClass("newColor");
+				} */
+
+				/* var t = document.getElementById("textbox");
+
+				if(t.classList.contains("newColor"))
+				{
+					t.classList.remove("newColor");
+				}
+				else
+				{
+					t.classList.add("newColor");
+				} */
+			}
+
+			function whenMouseLeaves()
+			{
+				textbox.html("<h1>Where ya goin?</h1>");
+			}
+		});	
+	</script>
+</body>
+</html>

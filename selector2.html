@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div id="textbox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus placeat ratione quo veniam dolore perferendis commodi debitis doloremque tenetur nostrum voluptas, quia eveniet sit magni quibusdam sapiente, illo qui quaerat.</div>
+
+	<script>
+		$(function(){
+			var newText = $('<p>');
+			newText.append("<h2>I just replaced something :)</h2>");
+
+			$('#textbox').html(newText).css({"border":"1px dotted red"});
+
+		});
+
+		$(document).on('click', function(){alert('jola');});
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Advanced selectors</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<!-- Deleting the first element and copy this to the last p -->
+	<a id="create" href="#">Create</a>
+	<a id="create_text" href="#">Create text</a>
+	<a id="create_variable" href="#">Create text</a>
+
+	<div id="container">
+		<p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus beatae ullam quod doloribus nulla inventore asperiores voluptatem, molestias neque, nihil debitis totam dolore, repellat corrupti deserunt error numquam cum autem!</p>
+		<p>3. Temporibus blanditiis animi, omnis doloremque voluptatem ab minus impedit ipsam consequatur consectetur iusto corporis, maxime vel modi hic architecto atque tempore? Repellat tenetur, dignissimos magnam ex ipsam soluta. Tenetur, necessitatibus.</p>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#create_text').click(function(e){
+				$('#container p:last').text('Replaced and created this text');
+			});
+
+			$('#create_variable').click(function(e){
+				var newText = $('#container p:first');
+
+				$('#container p:last').html(newText);
+			});
+		});
+	</script>
+</body>
+</html>

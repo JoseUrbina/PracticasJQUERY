@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slide</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<button id="btnSlide">Slide</button>
+	<button id="slide-up">UP</button>
+	<button id="slide-down">DOWN</button>
+	<div id="textbox">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{	
+			var textbox = $('#textbox');
+
+			$('#slide-up').on('click', function(e){
+				textbox.slideUp(3000);
+			});
+
+			$('#slide-down').on('click', function(e){
+				textbox.slideDown(3000);
+			});
+
+			$('#btnSlide').on('click', function(e)
+			{
+				textbox.slideToggle("slow", () => alert('Done'));
+			});
+		});	
+	</script>
+</body>
+</html>

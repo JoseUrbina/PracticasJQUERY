@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Advanced selectors</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, nam, sit. Impedit quam quia cumque amet, optio, quidem, illum nesciunt quasi earum perspiciatis sit corporis repellat quod modi fugiat repudiandae.</p>
+	<p>Voluptates hic doloremque deserunt, nihil. Rerum provident veritatis sit esse hic dignissimos nulla quaerat illo, excepturi autem beatae, quo deleniti quisquam harum, perferendis. Autem facere magnam ab, consectetur sunt necessitatibus?</p>
+
+	<div>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id cum, sunt rem qui totam perspiciatis praesentium quae veniam atque? Fugit sunt at placeat. Fugiat alias, perspiciatis veniam aperiam, delectus corporis!</p>
+		<p>Cupiditate dolorum nihil nobis saepe similique iste at. Alias et id vel culpa deserunt, repellendus unde, officiis, saepe veritatis quisquam non ea nobis atque debitis consectetur sequi maiores sint eaque?</p>
+		<p>Eligendi nam quia quaerat, harum reiciendis rerum exercitationem atque cupiditate quo consequuntur provident suscipit, sequi mollitia rem odio ipsum accusantium cum in tempora ad similique. Quaerat soluta veritatis, suscipit dolore.</p>
+		<p class="fourth-para">Corporis, delectus dignissimos laudantium, quaerat voluptate esse libero amet harum aperiam praesentium nisi quam qui fuga vitae dolorem minima modi quod laborum adipisci in eius deleniti! Sunt quasi facere itaque!</p>
+	</div>
+
+	<ul>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+	</ul>
+
+	<div id="box">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita exercitationem fuga delectus aperiam aut, officia quo ex eveniet odit impedit, magni quis, voluptate a vero tempora autem nisi. Nihil, blanditiis!</p>
+		<p>Est consectetur ullam quam dicta, laboriosam hic asperiores blanditiis accusamus vitae magni voluptatibus, assumenda eligendi. A neque vero vel quas, recusandae, placeat reprehenderit cupiditate error, fugit amet quasi eligendi quos!</p>
+		<p class="last">Rerum impedit quibusdam reprehenderit delectus ducimus ullam corporis ad eos possimus culpa deleniti iure in non consectetur dolore saepe, error assumenda omnis atque. Quis maxime similique exercitationem, odit, earum iusto.</p>
+	</div>
+
+	<ul>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Home</a></li>
+	</ul>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// $('div>p').css('border', '2px solid blue');
+			// $('div>p.fourth-para').css('border', '2px solid blue');
+			
+			// the element with id #box and the next element ul 
+			$('#box + ul').css('border', '2px solid blue');
+		});
+	</script>
+</body>
+</html>

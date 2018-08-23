@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Advanced selectors</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<a id="append" href="#">Append</a>
+	<a id="prepend" href="#">Prepend</a>
+
+	<div id="container">
+		<p>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus beatae ullam quod doloribus nulla inventore asperiores voluptatem, molestias neque, nihil debitis totam dolore, repellat corrupti deserunt error numquam cum autem!</p>
+		<p>3. Temporibus blanditiis animi, omnis doloremque voluptatem ab minus impedit ipsam consequatur consectetur iusto corporis, maxime vel modi hic architecto atque tempore? Repellat tenetur, dignissimos magnam ex ipsam soluta. Tenetur, necessitatibus.</p>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#append').click(function(e){
+				$('p:first').append('I just appended some copy!');
+			});
+
+			$('#prepend').click(function(e){
+				$('p:first').prepend('I just prepended some copy!');
+			});
+		});
+	</script>
+</body>
+</html>

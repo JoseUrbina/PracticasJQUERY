@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+		#textbox{
+			width: 200px;
+			height:200px;
+			background-color: #874512;
+			position: absolute;
+			margin-top:20px;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="grow">Grow</a> | <a href="#" id="move">Move</a> | <a href="#" id="big">Bigger</a> | <a href="#" id="many">Many things</a>
+
+	<div id="textbox">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+	</div>
+
+	<script type="text/javascript">
+		$(function()
+		{
+			var textbox = $('#textbox');
+
+			$('#grow').click(function(e){
+				textbox.animate({width: "500px"},2000);
+			});
+
+			$('#move').click(function(e){
+				textbox.animate({marginLeft: "200px"},1000);
+			});
+
+			$('#big').click(function(e){
+				textbox.animate({fontSize: "40px"},3000);
+			});
+
+			$('#many').click(function(e){
+				textbox.animate({fontSize: "40px", marginLeft: "400px" ,width: "600px"},2000);
+			});
+		});
+	</script>
+</body>
+</html>
