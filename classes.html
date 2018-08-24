@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Classes</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<style type="text/css">
+		.colorLetter
+		{
+			color: #672390;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" id="add-class">Add Class</a>
+	<a href="#" id="remove-class">Remove Class</a>
+	<a href="#" id="toggle-class">Toggle Class</a>
+	<div id="container">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quaerat, recusandae earum quas. Velit fuga molestiae eum quam commodi non, officiis eveniet minima magni consequuntur illo quis, consequatur laborum delectus!</p>
+		<p>Fugiat facere, reiciendis magnam beatae eos neque a excepturi odit aspernatur soluta non, et? Quia consequuntur veritatis provident aut corporis. Laudantium officiis repellendus cumque, amet doloremque saepe provident distinctio accusamus.</p>
+		<p>Quas reprehenderit molestiae hic beatae doloribus veritatis? Quo dolor reiciendis quasi aut earum dicta perspiciatis officiis recusandae odit quidem doloribus, blanditiis eligendi consequuntur quos expedita harum, provident qui voluptatem atque.</p>
+		<p>Aliquid nihil dignissimos nemo cum earum, nisi natus. Ipsa dicta, repellat architecto aliquam molestias incidunt rem veniam placeat eligendi laudantium nemo. Cum numquam eius, mollitia laboriosam dolorum exercitationem dolor. Cumque.</p>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#add-class").click(function(e){
+				$('#container>p').addClass("colorLetter");
+			});
+
+			$("#remove-class").click(function(e){
+				$('#container>p').removeClass('colorLetter');
+			});
+
+			$('#toggle-class').click(function(e){
+				$('p').toggleClass('colorLetter');
+			});
+		});
+	</script>
+</body>
+</html>
