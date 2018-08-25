@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example Mei</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- <script src="js/jquery.min.js"></script> -->
+
+	<script>
+		// Cuando se agrega la libreria jquery, se crea un objeto jQuery
+		// la siguiente line comprueba si se agrego correctamente con cdn, sino se agrega
+		// la direccion de la libreria 
+		(window.jQuery || document.write("<script src='js/jquery.min.js'><\/script>"))
+	</script>
+
+	<style type="text/css">
+		.colors
+		{
+			color: red;
+			background-color: #435465;
+		}
+	</style>
+</head>
+<body>
+	<p>Mensaje 1</p>
+	<p>Mensaje 2</p>
+	<p>Mensaje 3</p>
+
+	<script>
+
+		//  Ejemplo POO *************************************
+		function persona(name, age)
+		{
+			// || -> actua como condicional if ternario
+			this.name = name || "Name";
+			this.age = age || 100;
+		}
+
+		var unknown = new persona();
+		unknown.name = "Mason";
+		unknown.age = 22;
+
+		console.log(unknown.name + " " +unknown.age);
+
+		//  ************************************************
+		
+		// son lo mismo  
+		console.log(window.$);
+		console.log(window.jQuery);
+
+		/* $(function()
+		{
+
+		}); */
+
+		/*
+			window.onload -> comprueba la carga de toda la pagina
+			document -> comprueba que cargo solo la estuctura de la pagina (html)
+		 */
+		
+		window.onload = function()
+		{
+			// alert('window');
+		};
+
+		$(document).ready(function(){
+			// alert('document');
+			 
+			//$('body').css("background-color", "#453264");
+			
+			/*
+			
+			html y text -> funciones similares a innerHTML -> asignar y obtener el valor
+					
+			$('p').text("Mensaje con la funcion text");
+			alert($('p').text());
+
+			$('p').html("Mensaje con la funcion text");
+			alert($('p').html());
+
+			*/
+			
+			/*
+			
+			.css() -> permite aplicar propiedades css a los elementos
+			 
+			$('p').css("color", "red");
+			$('p').css({"color":"red", "background-color":"#154785"});
+
+			*/
+		
+			// $('p').addClass("colors");
+		});
+
+		var m = document.getElementsByTagName("P");
+		m[0].classList.add("colors");
+
+		console.log(m);
+
+		//var persona = {"name":"mason", "age":22};
+		//console.log(persona.name + " " + persona.age);
+		// document.body.style.backgroundColor = "#453264";
+	</script>
+</body>
+</html>

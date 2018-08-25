@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example 1</title>
+	<style type="text/css">
+		li.active
+		{
+			background-color: #342387;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>Broccoli</li>
+		<li>Apple</li>
+		<li>Pear</li>
+		<li>Banana</li>
+		<li>Mango</li>
+		<li>Milk</li>
+		<li>Carrot</li>
+	</ul>
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			// $('body').css("background-color","#748923");
+			
+			$('li').filter(':odd').hide().end().filter(':even').hover(function(e){
+				$(this).toggleClass("active").next().slideToggle("slow");
+			}); 
+		});
+	</script>
+</body>
+</html>

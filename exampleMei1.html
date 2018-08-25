@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example Mei</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- <script src="js/jquery.min.js"></script> -->
+
+	<script>
+		// Cuando se agrega la libreria jquery, se crea un objeto jQuery
+		// la siguiente line comprueba si se agrego correctamente con cdn, sino se agrega
+		// la direccion de la libreria 
+		(window.jQuery || document.write("<script src='js/jquery.min.js'><\/script>"))
+	</script>
+
+	<style type="text/css">
+		.colors
+		{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<button id="btnShow">Show</button> |	<button id="btnHide">Hide</button> | <button id="btnList">List</button>
+	
+	<h1 class="colors" id="title">This is my message</h1>
+	
+	<ul id="peopleObject">
+		
+	</ul>
+
+	<script>
+		var personas = [
+			{"name":"mason", "age":22, "active":true},
+			{"name":"jose", "age":25, "active":true},
+			{"name":"calipso", "age":100, "active":true},
+			{"name":"barbosa", "age":56, "active":true}
+		];
+
+		$(document).ready(function(){
+			$('#btnShow').on('click', function(e){
+				showOrhide(true);
+			});
+
+			$('#btnHide').click(function(e){
+				showOrhide(false);
+			});
+
+			function showOrhide(option)
+			{
+				if(option)
+				{
+					$("#title").show();
+				}
+				else
+				{
+					$('#title').hide();
+				}
+			}
+
+			var list = $('#peopleObject');
+
+			$('#btnList').on('click',function(e){
+
+				// limpia o elimina los elementos de list
+				list.empty();
+				
+				var largo = personas.length;
+
+				for(var i=0; i<largo;i++)
+				{
+					var persona = "";
+
+					for(var property in personas[i])
+					{
+						persona += property + " : " + personas[i][property] + " - ";
+					}
+
+					persona = persona.slice(0, persona.length - 3);
+					
+					var li = $('<li>');
+					li.text(persona);
+
+					list.append(li);
+				} 
+			});
+		});
+
+		var person = {"name":"mason", "age":22, "active":true};
+
+		for(var property in person){
+			console.log(property + " : " + person[property]);
+		}
+	</script>
+</body>
+</html>
