@@ -46,6 +46,8 @@
 				showOrhide(false);
 			});
 
+			// funcion para reali<ar la funcion show or hide segun su parametro
+			// true: show | false: hide
 			function showOrhide(option)
 			{
 				if(option)
@@ -58,6 +60,8 @@
 				}
 			}
 
+			// Variable cache : almacena el elemento ul en la memoria del navegador
+			// solo una vez (variable list)
 			var list = $('#peopleObject');
 
 			$('#btnList').on('click',function(e){
@@ -65,22 +69,36 @@
 				// limpia o elimina los elementos de list
 				list.empty();
 				
+				// Se obtiene el largo del arreglo de personas
 				var largo = personas.length;
 
+				// for para recorrer el arreglo de personas
 				for(var i=0; i<largo;i++)
 				{
+					// variable para almacenar los datos de una sola persona
 					var persona = "";
 
+					// for .. in -> recorre las propiedades de un objeto (JSON)
 					for(var property in personas[i])
 					{
+						// Concatenando en modo texto en la variable persona
+						//  el nombre de la propiedad y su valor
 						persona += property + " : " + personas[i][property] + " - ";
 					}
 
+					// slice : permite obtener una cadena desde un punto de inicio
+					// hasta el punto final sin tomar en cuenta el caracter del punto final 
+					// 1er parametro: start - 2do parameter: finish
+					// ejemplo: "jose".slice(0, 2) : jo
 					persona = persona.slice(0, persona.length - 3);
 					
+					// crear un elemento li
 					var li = $('<li>');
+					// agregar un texto al elemento li
 					li.text(persona);
 
+					// agregar el nuevo elmento li al final del elemento ul : como un
+					// nuevo hijo
 					list.append(li);
 				} 
 			});
@@ -91,6 +109,8 @@
 		for(var property in person){
 			console.log(property + " : " + person[property]);
 		}
+
+		console.log("jose".slice(0,2));
 	</script>
 </body>
 </html>
