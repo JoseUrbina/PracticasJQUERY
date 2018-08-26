@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table Practice</title>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<table id="tbPeople">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>AGE</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Peter</td>
+				<td>42</td>
+				<td><input type="button" id="btnDelete" value="Delete"></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Joseph</td>
+				<td>43</td>
+				<td><input type="button" id="btnDelete" value="Delete"></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Mary</td>
+				<td>23</td>
+				<td><input type="button" id="btnDelete" value="Delete"></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Louse</td>
+				<td>89</td>
+				<td><input type="button" id="btnDelete" value="Delete"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var table = $('#tbPeople');
+
+			function ListPeople()
+			{
+				var people = [{"id":1, "name": "Joseph", "age":25},
+							  {"id":2, "name": "Mary", "age":23},
+							  {"id":3, "name": "Peter", "age":14},
+							  {"id":4, "name": "Louse", "age":20}];
+
+				var largo = people.length;
+
+				for(var  i=0;i<largo;i++)
+				{
+					var fila = `<tr><td>${people[i]["id"]}</td>
+									<td>${people[i]["name"]}</td>
+									<td>${people[i]["age"]}</td>
+									<td><input type="button" value="Delete" id="btnDelete"></td>
+								</tr>`;
+
+					table.append($(fila));
+				}
+			}
+
+			// ListPeople();
+
+			// Selecciona el contenedor padre al que se click
+			// y dentro de el ya se valida si se dio click al boton con el id
+			// #btnDelete
+			$('#tbPeople>tbody').on('click', "#btnDelete", function(e)
+			{
+				// Eliminar el tr mas cercano al btndelete que se dio click
+				// el cual vendria siendo padre de este ultimo
+				$(this).closest('tr').remove();
+			});
+		});
+	</script>
+</body>
+</html>

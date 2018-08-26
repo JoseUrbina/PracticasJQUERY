@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate</title>
+	<script src="js/jquery.min.js"></script>
+	<style>
+		div{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: #F6E3CE;
+		}
+	</style>
+</head>
+<body>
+	<!-- Example that shows a div with movement to differrent places into the body -->
+	<div>
+
+	</div>
+
+	<script>
+		$(document).ready(function(){
+
+			$(document).on('keydown', moveDirectional);
+
+			function moveDirectional(e)
+			{
+				// Elemento div sus propiedades top y left permiten obtener la position actual
+				// de este, en relacion con su contenedor padre que es body
+				var top = $('div').css("top");
+				var left = $('div').css("left");
+
+				/* console.log([top.substring(0, (top.length - 2)), 
+							left.substring(0, (left.length - 2))]); */
+
+				switch(e.keyCode)
+				{
+					// Arrow Left
+					case 37:
+					 	// substring: 1er parameter - start : 2do parameter - the end 
+					 	// but without use this
+						if(parseFloat(left.substring(0, (left.length - 2))) > 0)
+						{
+							// Validation about left
+							moveElement("left","-=20");
+						}						
+						break;
+					// Arrow Up
+					case 38:
+						if(parseFloat(top.substring(0, (top.length - 2))) > 0)
+						{
+							// Validation about top
+							moveElement("top", "-=20");
+						}						
+						break;
+					// Arrow right
+					case 39:
+						moveElement("left", "+=20px");
+						break;
+					// Arrow down
+					case 40:
+						moveElement("top", "+=20");
+						break;
+				}
+			}
+
+			function moveElement(to, amount)
+			{
+				// Para utilizar variables dinamicas dentro de un objeto json
+				// es necesario crear el objeto vacio y luego asignar por separado
+				// campo y valor
+				var dinamicValues = {};
+				dinamicValues[to] = amount;
+
+				$('div').animate(dinamicValues, "fast");
+			}
+
+		});
+	</script>
+</body>
+</html>
