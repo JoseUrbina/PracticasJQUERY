@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fade out</title>
+	<script src="js/jquery.min.js"></script>
+	<style type="text/css">
+		span{
+			cursor: pointer;
+		}
+
+		.hilite{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<!-- Delete span and colocating the span text into the div-->
+	<h2>Showing the span text - <div></div></h2>
+	<p>
+		Today is a <span>new day</span> for showing a <span>smile</span> to another
+		<span>people</span>
+	</p>
+
+	<script>
+		$(document).ready(function(){
+			// When span click
+			$('span').on('click',function(e){
+				// Apply fadeout 1000s
+				$(this).fadeOut(1000, function(e){
+					// find the last div into h2 , then adding text
+					$('h2').find('div:last').text($(this).text() + ' ' + 'has fadded');
+					// Remove span selected
+					$(this).remove();
+				});
+			});
+
+			// Add or delete the hilite class
+			$('span').hover(function(e){
+				$(this).addClass('hilite');
+			}, function(e){
+				$(this).removeClass('hilite');
+			});
+		});
+	</script>
+</body>
+</html>

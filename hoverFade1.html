@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fade hover</title>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+		<button id="btnSave">Save</button>
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$("#btnSave").click(function(e){
+				// Create a div for showing a message
+				var div = $('<div id="message">');
+				div.css({"width":"500px", "height" : "100px", "background-color": "#562389",
+						"margin-bottom": "15px"});
+				div.text("Save");
+
+				// Add the new div to begining of .container element
+				$('.container').prepend(div);
+
+				// Then 4000s hide slow the div
+				$('#message').fadeOut(4000);
+			});
+		});
+	</script>
+</body>
+</html>

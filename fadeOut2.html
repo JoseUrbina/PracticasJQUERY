@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fade out 2</title>
+	<script src="js/jquery.min.js"></script>
+	<style>
+		.box{
+			position: relative;
+			float: left;
+			background-color:blue;
+			width:100px;
+			height: 100px;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btnFade">Fade Out</button> | <button id="btnShow">Show</button>
+	<div id="log"></div>
+	<div id="box1" class="box">Box 1</div>
+	<div id="box2" class="box">Box 2</div>
+
+	<script>
+		$(document).ready(function(){
+			$('#btnFade').on('click',function(e){
+				$('#box1').fadeOut(2000, completeLog);
+				$('#box2').fadeOut(2000, completeLog);
+			});
+
+			// Function that allows us get the element id, create a p element and
+			// appendto x element
+			function completeLog()
+			{
+				// this.id : use javascript for getting the id of x element
+				$('<p>').text(this.id).appendTo('#log');
+			}
+
+			// show the div with the class box
+			$('#btnShow').click(function(e){
+				$('div.box').fadeIn(3000);
+				// clean the elements into #log
+				$('#log').empty();
+			});
+		});
+	</script>
+</body>
+</html>

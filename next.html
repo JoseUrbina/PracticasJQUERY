@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<style>
+		button{
+			margin: 10px;
+		}
+
+		.mensajes{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- Use the next() function -->
+	<div><button disabled="disabled">First</button><span></span></div>
+	<div><button>Second</button><span></span></div>
+	<div><button disabled="disabled">Third</button><span></span></div>
+	
+	<br><br>
+	<p>Hellow World</p>
+	<p class="selected">New line in this page</p>
+
+	<p class="mensajes">Mensaje 1</p>
+	<p class="mensajes">Mensaje 2</p>
+	<p class="mensajes">Mensaje 3</p>
+
+	<button id="btnShow">Show</button> | <button id="btnHide">Hide</button>
+
+	<script>
+		$(document).ready(function(){
+			// button with disabled, select the next element and change its text
+			$('button[disabled]').next().text("this button is disabled");
+
+			// select p, then select the element with selected class
+			// finally, it applies css
+			$('p').next('.selected').css('color',"blue");
+
+			$('#btnShow').on('click',function(e){
+				// select the element with the mensajes class
+				// the hidden elements the first, showing element
+				// $('.mensajes:hidden:first').show();
+				// 
+				$('.mensajes:hidden:first').fadeIn(3000);
+			});
+
+			$('#btnHide').click(function(e){
+				// select the element with the mensajes class
+				// the visible elements the first, hiding element
+				// $('.mensajes:visible:last').hide();
+				// 
+				$('.mensajes:visible:last').fadeOut("slow");
+			});
+		});
+	</script>
+</body>
+</html>
