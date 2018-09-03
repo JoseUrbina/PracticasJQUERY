@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON 1</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div id="contenedor"></div>
+	<script>
+		$(document).ready(function(){
+			var cadena = '{"name":"josé", "lastname": "urbina"}';
+
+			var json = JSON.parse(cadena); // JSON.stringify(cadena);
+
+			// JSON.parse() -> convert json to javascript object
+			// JSON.stringfy() ->convert string to json data format
+
+			console.log(json);
+
+			$.get('https://jsonplaceholder.typicode.com/photos/2', function(response){
+				var container = $('<img id="imagen">');
+				container.attr({'src': response.url, 'width': "300px"});
+				container.css("display", "none");
+				var div = $('#contenedor').empty();
+				div.append(container);
+
+				// after appending img element, you can apply any animation, 
+				// before can't apply animation
+				$('img:hidden').slideDown("slow");
+				
+			}).fail(function(jqXHR, status, error){
+				console.log([jqXHR, status, error]);
+			});
+		});
+	</script>
+</body>
+</html>

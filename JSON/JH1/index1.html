@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="#" id="btnLoad"><button>Load</button></a>
+	<div class="container"></div>
+	<script>
+		$(document).ready(function(){
+			// use of $.get method
+			$('#btnLoad').click(function(e){
+				e.preventDefault();
+				$.get('contenedor.html').done(function(response){
+					$('.container').empty().append(response);
+				}).fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

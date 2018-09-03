@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<video autoplay controls></video>
+
+	<script>
+		// permite utilizar la sentencia url de window en todos lo navegadores
+		// sin problemas de compatibilidad
+		window.URL = window.URL || window.webkitURL;
+
+		// NOs permite acceder al hardware de nuestra computadora
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+								 navigator.mozGetUserMedia;
+
+		// 1er parameter: object with audio and video
+		// 2do parameter: function (variable que representa al video y camara)
+		navigator.getUserMedia({audio:true, video: true}, function(vid){
+			// para asignar un valor a src se necesita una URL
+			// por lo tanto usamos window.URL.createOBjectURL(pasar el video o audio a convertir)
+			document.querySelector('video').src = window.URL.createObjectURL(vid);
+		}, function(e)
+		{
+			// Función en caso que de un error
+			console.log(`Ocurrio un error: ${e}`);
+		});
+	</script>
+</body>
+</html>

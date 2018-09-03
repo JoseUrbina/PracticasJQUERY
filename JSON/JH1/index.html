@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="#" id="btnLoad"><button>Load</button></a>
+	<div class="container"></div>
+	<script>
+		$(document).ready(function(){
+			// Ejemplo with .load
+			$('#btnLoad').click(function(e){
+				e.preventDefault();
+				var container = $('.container').empty();
+				container.load('contenedor.html');
+			});
+		});
+	</script>
+</body>
+</html>

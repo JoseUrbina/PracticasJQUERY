@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>File</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			var data = {"name": "José" , "lastname": "Antonio", "age": 25};
+
+			$('body').load('file.php', data, function(response, status, jqXHR){
+				console.log([response, status, jqXHR]);
+			});
+		});
+	</script>
+</body>
+</html>
