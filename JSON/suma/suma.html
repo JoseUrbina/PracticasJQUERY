@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Suma</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<form id="frmOperation" method="POST">
+		<table>
+			<tr>
+				<td><label>Num 1:</label></td>
+				<td><input type="number" name="num1"></td>
+			</tr>
+			<tr>
+				<td><label>Num 2:</label></td>
+				<td><input type="number" name="num2"></td>
+			</tr>
+			<tr>
+				<td>Result:</td>
+				<td><label id="idResult"></label></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" name="enviar" value="Suma" id="btnGet">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script>
+		$(document).ready(function(){
+			var form = $('#frmOperation');
+
+			$('#btnGet').on('click', function(e){
+				var data = form.serialize();
+				console.log(data);
+				
+				$.ajax({method:'POST', url:'suma.php', data: data})
+				.done(function(response, status, jqXHR){
+					$('#idResult').empty().text(response);
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

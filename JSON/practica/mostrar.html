@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<button id="btnCargar">Cargar datos</button>
+	<hr>
+	<h3>Result</h3>
+	<div id="data">
+		
+	</div>
+	<script>
+		$(document).ready(function(){
+			$('#btnCargar').click(function(e){
+				$.ajax({method:'POST', url:'mostrar.php'})
+				.done(function(result, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					var large = result.length;
+					var container = $('#data').empty();
+
+					for(i=0;i<large;i++)
+					{
+						var cancion = `<p>
+										${result[i].titulo} : ${result[i].autor} : 
+										${result[i].album}</p>`;
+						
+						container.append($(cancion));				
+					} 
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

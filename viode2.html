@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video 2</title>
+</head>
+<body>
+	<video autoplay controls id="eVideo"></video>
+	<script>
+		window.URL = window.URL || window.webkitURL;
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
+								 || navigator.mozGetUserMedia;
+
+		navigator.getUserMedia({audio:true, video:true}, function(vid){
+			// it's better srcObject: directly
+			document.getElementById('eVideo').srcObject = vid;
+		}, function(e){
+			console.log(`Error: ${e}`);
+		});
+	</script>
+</body>
+</html>

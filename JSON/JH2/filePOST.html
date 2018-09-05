@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>POST</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="#" id="btnPost"><button>POST</button></a>
+	<script>
+		$(document).ready(function(){
+			var data = {'name': 'José', 'lastname': 'Urbina', 'age': 25};
+
+			$('#btnPost').on('click',function(e){
+				e.preventDefault();
+				$.post('filePOST.php', data)
+				.done(function(response, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					var cadena = `<p>Name: ${response.name} ${response.lastname} - 
+								     Age: ${response.age}</p>`;
+					$('body').append($(cadena));
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

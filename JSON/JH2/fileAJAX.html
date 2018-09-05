@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>File</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="#" id="btnGET"><button>GET</button></a>
+	<script>
+		$(document).ready(function(){
+			var data = {"name": "José" , "lastname": "Antonio", "age": 25};
+
+			$('#btnGET').on('click',function(e){
+				e.preventDefault();
+				$.ajax({method: "GET", url: "fileAJAX1.php", data: data})
+				.done(function(response,status, jqXHR){
+					console.log([status, jqXHR]);
+				}).fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+
+				nuevo();
+			});
+		});
+	</script>
+</body>
+</html>

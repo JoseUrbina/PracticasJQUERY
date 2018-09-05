@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX - POST</title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="#" id="btnPost"><button>POST</button></a>
+	<div id="results"></div>
+
+	<script>
+		$(document).ready(function(){
+			var data = {'name': 'José', 'lastname': 'Urbina', 'age': 25};
+
+			$('#btnPost').on('click', function(e){
+				e.preventDefault();
+				$.ajax({method: 'POST', url: 'fileAP.php', data: data})
+				.done(function(response, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					var chain = `<p>${response.name} ${response.lastname} : ${response.age}</p>`;
+
+					$('#results').empty().append($(chain));
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

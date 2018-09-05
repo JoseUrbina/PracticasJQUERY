@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Practice 2</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<input type="checkbox" name="fruit[]" value="Apple"> Apple
+		<input type="checkbox" name="fruit[]" value="Pear"> Pear
+		<input type="checkbox" name="fruit[]" value="Banana"> Banana
+	</div>
+
+	<input type="button" name="btnShow" value="Show" id="btnShow">
+	<script>
+		$(document).ready(function(){
+			$('#btnShow').on('click', function(e){
+				var fruit = $('input[type=checkbox]:checked').each(function(){
+					alert($(this).val());
+				});
+
+				console.log(fruit);
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../../js/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<input type="checkbox" name="fruit[]" value="Apple"> Apple
+		<input type="checkbox" name="fruit[]" value="Pear"> Pear
+		<input type="checkbox" name="fruit[]" value="Mango"> Mango
+	</div>
+	<input type="button" name="enviar" value="Save" id="btnSave">
+
+	<script>
+		$(document).ready(function(){
+			$('#btnSave').click(function(e){
+			    var fruit = [];
+				$('input[type=checkbox]:checked').each(function(){
+					fruit.push($(this).val());
+				});
+
+				// var fruit = $('input[type=checkbox]:checked').serialize();
+
+				$.post('checkbox.php', {'fruit[]': fruit})
+				.done(function(result, status, jqXHR){
+					console.log([status, jqXHR]);
+
+
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			});
+		});
+	</script>
+</body>
+</html>
