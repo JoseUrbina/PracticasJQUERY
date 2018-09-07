@@ -16,20 +16,18 @@
 		$(document).ready(function(){
 			$('#btnCargar').click(function(e){
 				$.ajax({method:'POST', url:'mostrar.php'})
-				.done(function(result, status, jqXHR){
+				.done(function(response, status, jqXHR){
 					console.log([status, jqXHR]);
 
-					var large = result.length;
-					var container = $('#data').empty();
+					var large = response.length;
+					var container = $('div#data').empty();
 
-					for(i=0;i<large;i++)
-					{
-						var cancion = `<p>
-										${result[i].titulo} : ${result[i].autor} : 
-										${result[i].album}</p>`;
-						
-						container.append($(cancion));				
-					} 
+					for(var i=0;i<large;i++){
+						var chain = `<p>${response[i].titulo} : ${response[i].autor}
+									 : ${response[i].album}</p>`;
+
+						container.append($(chain));
+					}
 				})
 				.fail(function(jqXHR, status){
 					console.log([jqXHR, status]);

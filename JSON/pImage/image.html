@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image</title>
+	<script src="../../js/jquery.min.js"></script>
+	<style>
+		table{
+			margin:auto;
+			border:1px dotted red;
+		}
+	</style>
+</head>
+<body>
+	<form id="frmImage" method="POST" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name" id="name"></td>
+			</tr>
+			<tr>
+				<td>Image:</td>
+				<td><input type="file" name="image" id="cImage"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="enviar" id="btnEnviar" value="Enviar">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<div id="result"></div>
+	<script>
+		$(document).ready(function(){
+			$('#frmImage').on('submit',function(e){
+				e.preventDefault();
+				var data = new FormData(document.getElementById('frmImage'));
+				// var image = document.getElementById('cImage').files[0];
+
+				// data.append('name', $('#name').val());
+				// data.append('image', image);
+				// 
+				//console.log(data.get('image'))
+
+				$.post({url:'image.php', data: data,
+						processData: false, contentType: false})
+				.done(function(response, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					$('#result').empty().append($(`<p>${response}</p>`));
+
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+				
+				/* $.ajax({method:'POST',
+						url: 'image.php',
+						data: data,
+						processData: false,
+						contentType: false
+				})
+				.done(function(response, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					$('#result').empty().append($(`<p>${response}</p>`));
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				}); */
+			});
+		});
+	</script>
+</body>
+</html>
