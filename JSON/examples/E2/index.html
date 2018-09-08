@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	<script src="../../../js/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			var obj = {'name': "Sejo", 'age': 26};
+
+			$.post('file.php', obj)
+			.done(function(data, status, jqXHR)
+			{
+				console.log([status, jqXHR]);
+				console.log(data);
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status]);
+			});
+		});
+	</script>
+</body>
+</html>
