@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON Sandbox</title>
+</head>
+<body>
+	<ul id="people">
+		
+	</ul>
+	<script>
+		var person = {
+			name: "Brad",
+			age: 36,
+			address: {
+				street: "25 Mei St.",
+				city: "New York"
+			},
+			children: ["Brianna", "Roger"]
+		};
+
+		var people = [
+			{
+				name: "Brad",
+				age: 25
+			},
+			{
+				name:"Lelouch",
+				age: 15
+			},
+			{
+				name: "Nunally",
+				age: 13
+			}
+		];
+
+		document.body.insertAdjacentHTML('afterbegin', `<p>${person.children[0]}</p>`);
+
+		var elements = '';
+
+		for(var i=0;i<people.length;i++)
+		{
+			elements += `<li>${people[i].name}</li>`;
+		}
+
+		document.getElementById('people').innerHTML = elements;
+
+
+		var request =  new XMLHttpRequest();
+		request.open('GET','people.json', true);
+
+		request.onload = function(){
+			var objects = JSON.parse(request.responseText);
+
+			for(var i=0;i<objects.people.length;i++){
+				console.log(objects.people[i].name);
+			}
+		}
+
+		request.onerror = function(){
+			console.log('Error');
+		}
+
+		request.send();
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>List of products</title>
+	<script src="../../../js/jquery.min.js"></script>
+	<style>
+		div{
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>	
+
+	<script>
+		function delProduct(e, id)
+		{
+			e.preventDefault();
+			console.log(parseInt(id));
+		} 
+
+		$(document).ready(function(){
+			ListProducts();				
+
+			function ListProducts()
+			{
+				$.ajax({method:'GET', url: 'list.php'})
+				.done(function(data, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					//console.log(data);
+					var container = document.getElementById('container');
+					
+					for(var i=0; i<data.products.length;i++)
+					{
+						var elements = '';
+
+						elements += `<div>
+										<p>ID: ${data.products[i].ID}</p>
+										<p>Seccion: ${data.products[i].SECCION}</p>
+										<p>Articulo: ${data.products[i].NOMBRE}</p>
+									`;
+
+						var imagen = data.products[i].FOTO;
+
+						if(imagen != null){
+							elements += `<img src="imagenes/${imagen}" alt="not found">`;
+						}
+
+						elements += `<div><button id="btnDelete" 
+									 onclick="delProduct(event,${data.products[i].ID});">
+									 Delete</button></div></div><hr>`;
+
+						container.insertAdjacentHTML('beforeend', elements);
+					}
+				})
+				.fail(function(jqXHR, status){
+					console.log([jqXHR, status]);
+				});
+			}
+		});
+	</script>
+</body>
+</html>
