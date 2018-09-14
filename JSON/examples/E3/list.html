@@ -17,7 +17,17 @@
 		function delProduct(e, id)
 		{
 			e.preventDefault();
-			console.log(parseInt(id));
+
+			$.get('delete.php', { "id": parseInt(id)})
+			.done(function(data, status, jqXHR){
+				console.log([status, jqXHR]);
+
+				alert(data.message);
+				location.href = "list.html";
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status]);
+			});
 		} 
 
 		$(document).ready(function(){
