@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select id="material" name="material[]" multiple>
+		<option value="M">Mercurio</option>
+		<option value="P" selected>Plata</option>
+		<option value="O">Oro</option>
+	</select>
+	<hr>
+	<button id="btnSave">Save</button>
+
+	<div id="container"></div>
+
+	<script>
+		document.getElementById('btnSave').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var material = [];
+			var mat = document.getElementById('material').options;
+
+			var cadena = '';
+
+			for(var i=0;i<mat.length;i++)
+			{
+				if(mat[i].selected)
+				{
+					cadena += 'material[]=' + mat[i].text + "&";
+					// material.push(mat[i].text);
+				}
+			}
+
+			cadena = cadena.slice(0,-1);
+
+			sendData(cadena);
+		});
+
+
+		function sendData(data)
+		{
+			var xml = new XMLHttpRequest();
+
+			xml.open('POST', 'select.php');
+			xml.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+			xml.onload = function(){
+				var d = JSON.parse(xml.responseText);
+
+				var elements = '';
+				for(var i=0;i<d.length;i++)
+				{
+					elements += `<p>${d[i]}</p>`;
+				}
+
+				document.getElementById('container').innerHTML = elements;
+			}
+
+			xml.onerror = function(){
+				console.log('ERROR!!');
+			}
+
+			xml.send(data);
+		}
+	</script>
+</body>
+</html>

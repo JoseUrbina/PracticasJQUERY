@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>List</title>
+</head>
+<body>
+	<ul id="list">
+		<li>Apple</li>
+		<li>Pineapple</li>
+		<li>Watermelon</li>
+		<li>Mango</li>
+		<li>Banana</li>
+	</ul>
+
+	<button id="btnAdd">Add</button>
+	<script>
+		document.getElementById('btnAdd').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var list = document.getElementById('list');
+			var element = `<li>New element</li>`;
+			list.insertAdjacentHTML('beforeend',element);
+		});
+
+		document.querySelector('ul').addEventListener('click',function(event){
+			var element = event.target;
+
+			element.remove();
+		});
+	</script>
+</body>
+</html>

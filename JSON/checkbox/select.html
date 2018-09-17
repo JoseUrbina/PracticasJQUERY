@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select id="fruits" name="fruit[]" multiple>
+		<option value="1" selected>Apple</option>
+		<option value="2"> Pear</option>
+		<option value="3">Mango</option>
+	</select>
+	<hr>
+	<button id="btnClick">Click</button>
+
+	<script>
+		document.getElementById('btnClick').addEventListener('click',function(event){
+			event.preventDefault();
+
+			/* var seleccionado = document.getElementById('fruits');
+
+			// obtener el valor del option seleccionado
+			var value = seleccionado.value;
+			// Obtener el text del option seleccionado
+			var text = seleccionado.options[seleccionado.selectedIndex].text;
+
+			var element = document.querySelectorAll('#fruits option:selected').value;
+
+			//console.log([value, text]);
+			//
+			console.log(element); */
+
+			var opts = [];
+			var elements = document.getElementById('fruits').options;
+
+			for(var i=0;i<elements.length;i++)
+			{
+				if(elements[i].selected)
+				{
+					opts.push([elements[i].value, elements[i].text]);
+				}
+			}
+
+			console.log(opts);
+		});
+	</script>
+</body>
+</html>
