@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise 1</title>
+</head>
+<body>
+	<script>
+		
+	
+		var promise = new Promise(function(resolve, reject){
+			const FLAG = 5;
+
+			setTimeout(() => {
+				if(FLAG == 10)
+					resolve("All ready");
+				else
+					reject("It's happended an error");
+			},3000);
+		});
+
+		promise.then(resolve => console.log(resolve))
+		.catch(error => console.log(error));
+	</script>
+</body>
+</html>

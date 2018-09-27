@@ -89,6 +89,7 @@
 			document.getElementById('tabla').addEventListener('click',function(event){
 				var element = event.target;
 
+				// SI se dio click dentro de la tabla a uno de los botones
 				if(element.classList.contains('btn'))
 				{
 					var father = element.parentElement.parentElement;
@@ -109,6 +110,7 @@
 			document.getElementById('btnSave').addEventListener('click',function(event){
 				event.preventDefault();
 
+				// Creando un objeto de datos
 				var data = {
 					"Id": parseInt(document.getElementById('Id').value),
 					"Name": document.getElementById('name').value,

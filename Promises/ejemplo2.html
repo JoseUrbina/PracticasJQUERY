@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promises</title>
+</head>
+<body>
+	<script>
+		var Promesa1 = new Promise(function(resolve, reject){
+			resolve("Promise 1 executed");
+		});
+
+		var Promesa2 = new Promise(function(resolve, reject){
+			setTimeout(function(){
+				resolve("Promise 2 executed");
+			}, 500);
+		});
+
+		var Promesa3 = new Promise(function(resolve, reject){
+			setTimeout(function(){
+				resolve("Promise 3 executed");
+			}, 1000);
+		});
+
+		var Promesa4 = new Promise(function(resolve, reject){
+			setTimeout(function(){
+				resolve("Promise 4 executed");
+			}, 1500);
+		});
+
+		// all: enviar las promises como un arreglo
+		// all: permite ejecturar multiples promesas y obtener un resultado de exito si toda
+		// se ejecutaron correctamente sino arraja el error
+		Promise.all([Promesa1, Promesa2, Promesa3, Promesa4])
+		.then(aResponse => {console.log(aResponse)})
+		.catch(error => {console.log('Error: ' + error)});
+	</script>
+</body>
+</html>

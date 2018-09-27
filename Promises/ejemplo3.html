@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise</title>
+</head>
+<body>
+	<script>
+		function InvertirCadena(cadena)
+		{
+			// retornar un promise 
+			// el cual retorna una cadena invertida
+			return new Promise(function(resolve, reject){
+				resolve(cadena.split('').reverse().join(''));
+			});
+		}
+
+		InvertirCadena('Hello World')
+		.then(response => {console.log('Cadena Invertida: ' + response.slice(0, 5))})
+		.catch(error => {console.log(error)});
+	</script>
+</body>
+</html>
