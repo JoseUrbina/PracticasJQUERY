@@ -11,6 +11,7 @@
 
 	$result = $connection->query($query);
 
+	// it query failed, you must do that
 	if(!$result)
 	{
 		die("Query failed : {$connection->error}");
