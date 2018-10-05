@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SIMPLE AJAX</title>
+</head>
+<body>
+	<button onclick="sendRequest()">Hello World</button>
+
+	<h1 id="message"></h1>
+
+	<script>
+		function sendRequest()
+		{
+			var request = new XMLHttpRequest();
+			request.open('GET','backend.php', true);
+			request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+			request.onload = function(){
+				if(request.readyState >=4 && request.readyState <= 200)
+				{
+					var data = request.responseText;
+
+					document.getElementById('message').innerHTML = data;
+				}
+			}
+
+			request.onerror =  function(){
+				console.log('ERROR!');
+			}
+
+			request.send();
+		}
+	</script>
+</body>
+</html>

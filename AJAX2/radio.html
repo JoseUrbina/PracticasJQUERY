@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<div>
+		<input type="radio" name="fruit" value="Pear"> Pear
+		<input type="radio" name="fruit" value="Tomato"> Tomato
+		<input type="radio" name="fruit" value="Banana"> Banana
+	</div>
+
+	<hr>
+	<button id="btnSend">Send</button>
+
+	<script>
+		document.getElementById('btnSend').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var radio =  document.querySelector('input[type=radio]:checked').value;
+
+			console.log(radio);
+		});
+	</script>
+</body>
+</html>

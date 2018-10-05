@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select name="fruit" id="fruit">
+		<option value="1">Apple</option>
+		<option value="2">Pear</option>
+		<option value="3">Watermelon</option>
+		<option value="4">Mango</option>
+	</select>
+
+	<hr>
+	<button id="btnSend">Send</button>
+
+	<script>
+		document.getElementById('btnSend').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var combo = document.getElementById('fruit');
+
+			var value = combo.value;
+			var text = combo.options[combo.selectedIndex].text;
+
+
+			console.log([value,text]);
+		});
+	</script>
+</body>
+</html>

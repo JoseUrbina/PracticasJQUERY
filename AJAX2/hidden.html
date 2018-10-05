@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<div>
+		<input type="hidden" name="fruit[]" value="Apple">
+		<input type="hidden" name="fruit[]" value="Pear">
+		<input type="hidden" name="fruit[]" value="Mango">
+		<input type="hidden" name="fruit[]" value="Grapes">
+	</div>
+
+	<hr>
+	<button id="btnSend">Send</button>
+
+	<script>
+		document.getElementById('btnSend').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var elements = Array.from(document.querySelectorAll('input[type=hidden]'));
+
+			var fruits = elements.map(e => e.value);
+
+			var data = {
+				'name': 'José Antonio',
+				'fruits': fruits
+			}
+
+			console.log(data.fruits[0]);
+		});
+	</script>
+</body>
+</html>

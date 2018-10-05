@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GET</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		function getHTML()
+		{
+			/*var request = new XMLHttpRequest();
+
+			request.open('GET', 'anexo.html');
+
+			request.onload = function(){
+				if(request.readyState >= 4 && request.readyState <= 200)
+				{
+					var data = request.responseText;
+
+					document.body.insertAdjacentHTML('afterbegin', data);
+				}
+			}
+
+			request.onerror = function(){
+				console.log('It\'s happened an error');
+			}
+
+			request.send(); */
+
+			$.get('anexo.html')
+			.done(function(data, status, jqXHR){
+				console.log([status, jqXHR]);
+
+				document.body.insertAdjacentHTML('afterbegin', data);
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status]);
+			});
+		}
+
+		getHTML();
+
+		function getData()
+		{
+			/* var datas = "?f=1";
+
+			var request = new XMLHttpRequest();
+			request.open('GET','ejemplo1.php' + datas);
+
+			request.onload = function(){
+				if(request.readyState >=4 && request.readyState <= 200)
+				{
+					var data = request.responseText;
+
+					console.log(data);
+				}
+			}
+
+			request.onerror = function(){
+				console.log('It\'s happened an error');
+			}
+
+			request.send(); */
+
+			$.ajax({url:'ejemplo1.php',
+					method: 'GET',
+					data: { f : 1 }
+					})
+			.done(function(data, status, jqXHR){
+				console.log([status, jqXHR]);
+
+				for(var i=0; i<data.length; i++)
+				{
+					console.log(data[i]);
+				}
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status]);
+			});
+		}
+
+		getData();
+	</script>
+</body>
+</html>

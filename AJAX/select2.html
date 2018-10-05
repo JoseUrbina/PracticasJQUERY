@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select 2</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<select name="furniture[]" id="sFurniture" multiple>
+		<option value="Curtain" selected>Curtain</option>
+		<option value="Armchair">Armchair</option>
+		<option value="Sofa">Sofa</option>
+		<option value="Cushion">Cushion</option>
+	</select>
+
+	<input type="button" id="btnSave" value="Save">
+
+	<script>
+		document.getElementById('btnSave').addEventListener('click', function(event){
+			var select = document.getElementById('sFurniture').options;
+			// var text = select.options[select.selectedIndex].text;
+			var furniture = [];
+
+			for(var i=0;i<select.length;i++)
+			{
+				if(select[i].selected)
+				{
+					furniture.push([select[i].value, select[i].text]);
+				}
+			}
+
+			console.log(furniture); 
+		});
+	</script>
+</body>
+</html>

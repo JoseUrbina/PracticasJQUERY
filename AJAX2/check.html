@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<input type="checkbox" name="fruits[]" value="Apple"> Apple
+		<input type="checkbox" name="fruits[]" value="Pear"> Pear
+		<input type="checkbox" name="fruits[]" value="Grape"> Grape
+		<input type="checkbox" name="fruits[]" value="Onion"> Onion
+	</div>
+
+	<hr>
+	<button id="btnSend">Send</button>
+
+	<script>
+		document.getElementById('btnSend').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var fruits = Array.from(document.querySelectorAll('input[type=checkbox]:checked'));
+
+			var elements = fruits.map(e => e.value);
+
+			sendData(elements);			
+		});
+
+		function sendData(elements)
+		{
+			/* var fruit = elements.map(e => "fruit[]=" + e).join("&");
+
+			var request = new XMLHttpRequest();
+
+			request.open('POST','text1.php');
+			request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+			request.onload = function(){
+				if(request.readyState >= 4 && request.readyState <= 200)
+				{
+					var data = request.responseText;
+
+					console.log(data);
+				}
+			}
+
+			request.onerror = function(){
+				console.log('ERROR!');
+			}
+
+			request.send(fruit); */
+
+			$.post({
+				url: 'text1.php',
+				data:{
+					'fruit[]':elements
+				}
+			})
+			.done(function(data, status, jqXHR){
+				console.log([status, jqXHR]);
+
+				console.log(data);
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status])
+			});
+		}	
+	</script>
+</body>
+</html>

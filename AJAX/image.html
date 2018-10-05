@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<form method="POST" id="frmImage" enctype="multipart/form-data">
+		<label>User: <input type="text" name="user" id="user"></label><br><br>
+		<input type="file" name="image" id="image"><br><br>
+		<input type="submit" value="Save">
+	</form>
+
+	<hr>
+	<label>Name: <span id="nImage"></span></label>
+
+	<script>
+		document.getElementById('frmImage').addEventListener('submit', function(event){
+			event.preventDefault();
+
+			/* var data = {
+				user: document.getElementById('user').value,
+				image: document.getElementById('image').files[0]
+			} */
+
+			var data = new FormData(this);
+
+			saveImage(data);
+		});
+
+		function saveImage(data)
+		{
+			var request = new XMLHttpRequest();
+			request.open('POST', 'image.php', true);
+
+			// NOTA: NO SE NECESITA ESTA LINEA CUANDO SE OCUPA FORMDATA
+			//request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+			request.onload = function(){
+				if(request.readyState >= 4 && request.readyState <= 200)
+				{
+					var response = JSON.parse(request.responseText);
+
+					document.getElementById('nImage').innerHTML = `${response.user} - ${response.image}`;
+				}				
+			}
+
+			request.onerror = function(){
+				console.log(`It's happened an error`);
+			}
+
+			request.send(data);
+		}
+
+		function saveImage2(data)
+		{
+			$.post({
+				url: 'image.php',
+				data: data,
+				contentType: false,
+				processData: false
+
+			})
+			.done(function(response,status, jqXHR){
+				document.getElementById('nImage').innerHTML = 
+							`${response.user} - ${response.image}`;
+			})
+			.fail(function(jqXHR, status){
+				console.log([jqXHR, status]);
+			});
+		}
+	</script>
+</body>
+</html>

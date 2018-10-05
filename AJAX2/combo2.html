@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select name="fruit[]" id="fruit" multiple>
+		<option value="1">Apple</option>
+		<option value="2" selected>Pear</option>
+		<option value="3">Watermelon</option>
+		<option value="4">Mango</option>
+	</select>
+
+	<hr>
+	<button id="btnSend">Send</button>
+
+	<script>
+		document.getElementById('btnSend').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var combo = document.getElementById('fruit').options;
+
+			var elements = [];
+			var largo =  combo.length;
+
+			for(var i=0;i<largo;i++)
+			{
+				if(combo[i].selected)
+				{
+					elements.push([combo[i].value, combo[i].text]);
+				}
+			}
+
+			console.log(elements);
+		});
+	</script>
+</body>
+</html>

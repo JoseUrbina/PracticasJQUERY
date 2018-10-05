@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video</title>
+</head>
+<body>
+	<video autoplay controls="controls" id="cVideo"></video>
+	<script>
+		window.URL = window.URL || window.webkitURL;
+
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
+								 || navigator.mozGetUserMedia;
+
+		navigator.getUserMedia({audio: true, video: true}, function(vid){
+			document.getElementById('cVideo').srcObject = vid;
+		}, function(e){
+			console.log('Error ' + e);
+		});
+	</script>
+</body>
+</html>
