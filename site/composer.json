@@ -1,0 +1,7 @@
+{
+    "name": "joseurbina/blog",
+    "description": "Library PHP",
+    "type": "proyect",
+    "license": "MIT",
+    "require": {}
+}

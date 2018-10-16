@@ -1,5 +1,6 @@
 {
 	"require":{
-		"monolog/monolog":"1.2.*"
+		"monolog/monolog":"1.2.*",
+		"components/jquery": "^3.3"
 	}
 }

@@ -1,0 +1,8 @@
+[2018-10-16 00:47:41] name.WARNING: Foo [] []
+[2018-10-16 00:48:26] newName.WARNING: New foo [] []
+[2018-10-16 01:00:18] newName.WARNING: New foo [] []
+[2018-10-16 02:08:58] newFoo.WARNING: New foo 1 [] []
+[2018-10-16 02:09:00] newFoo.WARNING: New foo 1 [] []
+[2018-10-16 02:10:19] newFoo.WARNING: New foo 1 [] []
+[2018-10-16 02:11:04] FooLogger.WARNING: New foo Logger [] []
+[2018-10-16 02:17:14] FooLogger1.WARNING: New foo Logger 1 [] []
