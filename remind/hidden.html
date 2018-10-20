@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HIDDEN</title>
+</head>
+<body>
+	<input type="hidden" name="telefono[]" class="tel" value="apple">
+	<input type="hidden" name="telefono[]" class="tel" value="pear">
+	<input type="hidden" name="telefono[]" class="tel" value="watermelon">
+	<input type="hidden" name="telefono[]" class="tel" value="banana">
+	<input type="hidden" name="telefono[]" class="tel" value="pineapple">
+	<hr>
+	<input type="button" id="btnGet" value="Get">
+	<script>
+		document.getElementById('btnGet').addEventListener('click', function(event){
+			event.preventDefault();
+
+			var inputHidden = Array.from(document.querySelectorAll('.tel'));
+			var valuesTel = inputHidden.map(el => el.value);
+
+			console.log(valuesTel);
+		});
+	</script>
+</body>
+</html>
