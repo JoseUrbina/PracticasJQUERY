@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select id="countries" name="countries">
+		<option value="Nicaragua" selected>Nicaragua</option>
+		<option value="Japan">Japan</option>
+		<option value="Tokio">Tokio</option>
+		<option value="Argentina">Argentina</option>
+	</select>
+
+	<hr>
+	<button id="btnGet">Get</button>
+	<script>
+		document.getElementById('btnGet').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var combo = document.getElementById('countries');
+
+			var value = combo.options[combo.selectedIndex].value;
+			var text = combo.options[combo.selectedIndex].text;
+
+			console.log([value, text]);
+		});
+	</script>
+</body>
+</html>

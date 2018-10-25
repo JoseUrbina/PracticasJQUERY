@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CHECKBOX</title>
+</head>
+<body>
+	<input type="checkbox" name="country[]" value="Nic"> Nicaragua
+	<input type="checkbox" name="country[]" value="U.S"> United States
+	<input type="checkbox" name="country[]" value="U.K"> United Kingdom
+	<input type="checkbox" name="country[]" value="Japan"> Japan
+	<hr>
+	<button id="btnGet">Get</button>
+
+	<script>
+		document.getElementById('btnGet').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var check = Array.from(document.querySelectorAll('input[type=checkbox]:checked'));
+			var countries = check.map(element => element.value);
+
+			console.log(countries); 
+		});
+	</script>
+</body>
+</html>

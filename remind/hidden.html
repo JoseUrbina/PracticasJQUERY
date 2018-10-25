@@ -19,7 +19,9 @@
 			var inputHidden = Array.from(document.querySelectorAll('.tel'));
 			var valuesTel = inputHidden.map(el => el.value);
 
-			console.log(valuesTel);
+			var jsonString = valuesTel.map(key => "telefono[]=" + key).join("&");
+
+			console.log(jsonString);
 		});
 	</script>
 </body>

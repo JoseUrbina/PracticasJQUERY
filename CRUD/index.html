@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>USERS</title>
+	<script src="jquery.min.js"></script>
+	<style>
+		td
+		{
+			border: 1px dotted red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<form method="POST" id="frmUser">
+			<input type="hidden" name="idUser" id="idUser" value="0">
+			<label>First Name: <input type="text" name="firstName" id="firstName"></label><br><br>
+			<label>Last Name: <input type="text" name="lastName" id="lastName"></label><br><br>
+			<input type="submit" id="btnOp" value="Add">
+		</form>
+	</div>
+
+	<hr>
+
+	<table id="tbUser">
+		<thead>
+			<tr>
+				<td width="100px">ID</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td width="100px"></td>
+				<td width="100px"></td>
+			</tr>
+		</thead>
+		<tbody id="tBodyU"></tbody>
+	</table>
+
+	<script>
+		$(document).ready(function(){
+			fetchUsers();
+
+			// Función para obtener el listado de todos los usuarios
+			function fetchUsers()
+			{
+				$.get('list.php')
+				.done(function(data, status, jqXHR){
+					console.log([status, jqXHR]);
+
+					var template = '';
+
+					if(data.length > 0)
+					{
+						data.forEach(u => {
+							template += `<tr>
+										<td>${u.idUser}</td>
+										<td>${u.firstName}</td>
+										<td>${u.lastName}</td>
+										<td>
+										<input type="button" class="btnEdit" value="Edit" 
+											   id="${u.idUser}">
+										</td>
+										<td>
+										<input type="button" class="btnDelete" value="Delete" 
+											   id="${u.idUser}">
+										</td>
+									</tr>`;
+								});						
+					}
+					else
+					{
+						template += `<tr>
+										<td colspan="5">Data has not found</td>
+									</tr>`;
+					}
+
+					document.getElementById('tBodyU').innerHTML = template;
+				})
+				.fail((jqXHR, status) => console.log([jqXHR, status]));
+			}
+
+			// click boton submit del formulario
+			document.getElementById('frmUser').addEventListener('submit', function(event){
+				event.preventDefault();
+				addOrEdit($('#btnOp').val());
+			})
+
+			// function para editar o add un registro
+			// dependiendo del parametro action
+			function addOrEdit(action)
+			{
+				// Obteniendo los valores de los campos
+				var id = parseInt($('#idUser').val());
+				var firstName = $('#firstName').val();
+				var lastName = $('#lastName').val();
+
+				$.ajax({
+					url: 'cud.php',
+					method:'POST',
+					data: {id, firstName, lastName, action}
+				})
+				.done(function(response, status, jqXHR)
+				{
+					console.log([status, jqXHR]);
+
+					alert(response.message);
+					assingValues(0, "", "", "Add");
+					fetchUsers();
+				})
+				.fail((jqXHR, status) => console.log([jqXHR, status]));
+			}
+
+			// función en general para asginar un valor especifico a los campos
+			function assingValues(id, firstName, lastName, action)
+			{
+				$('#idUser').val(id);
+				$('#firstName').val(firstName);
+				$('#lastName').val(lastName);
+				$('#btnOp').val(action);
+			}
+
+			// Boton editar que esta en la tabla
+			$(document).on('click', '.btnEdit', function(event){
+				event.preventDefault();
+
+				// EL campo id del user en este ejemplo se lo asigne al valor id del boton
+				var id = $(this).attr('id');
+				
+				$.get({
+					url: 'search.php',
+					data: {id}
+				})
+				.done(function(response, status, jqXHR)
+				{
+					console.log([status, jqXHR]);
+
+					if(response.length > 0)
+					{
+						assingValues(response[0].idUser, response[0].firstName, 
+									 response[0].lastName, "Edit");
+					}
+					else
+					{
+						alert("Data has not found");
+					}
+				})
+				.fail((jqXHR, status) => console.log([jqXHR, status]));
+			});
+
+			// Boton eliminar un registro
+			$(document).on('click', '.btnDelete', function(event){
+				event.preventDefault();
+
+				var id = $(this).attr('id');
+
+				$.post({
+					url: 'cud.php',
+					data: { id , action : 'Delete'}
+				})
+				.done(function(response, status, jqXHR){
+					alert(response.message);
+					fetchUsers();
+				})
+				.fail((jqXHR, status) => console.log([jqXHR, status]));
+			});
+		});
+	</script>
+</body>
+</html>

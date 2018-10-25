@@ -1,7 +1,13 @@
 {
-	"name": "joseurbina/acme",
-	"description": "Practice ACME",
+	"name": "joseurbina/timer",
+	"description": "Function timer PHP",
+	"type":"library",
 	"license": "MIT",
+	"authors":[{
+		"name": "José Urbina",
+		"email": "joseantonioug.99@gmail.com",
+		"role": "Developer"
+	}],
 	"require":{
 		"nesbot/carbon" : "^1.33",
 		"monolog/monolog": "1.0.*"

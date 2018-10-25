@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Radio</title>
+</head>
+<body>
+	<input type="radio" name="fruit" value="Nic" checked> Nicaragua
+	<input type="radio" name="fruit" value="U.S"> United States
+	<input type="radio" name="fruit" value="U.K"> United Kingdom
+
+	<hr>
+	<button id="btnGet">Get</button>
+	<script>
+		document.getElementById('btnGet').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var radio = document.querySelector('input[type=radio]:checked').value;
+
+			console.log(radio);
+		});
+	</script> 
+</body>
+</html>

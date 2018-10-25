@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+	<select id="countries" name="countries[]" multiple>
+		<option value="Nicaragua" selected>Nicaragua</option>
+		<option value="Japan">Japan</option>
+		<option value="Tokio">Tokio</option>
+		<option value="Argentina">Argentina</option>
+	</select>
+
+	<hr>
+	<button id="btnGet">Get</button>
+	<script>
+		document.getElementById('btnGet').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var elements = Array.from(document.getElementById('countries').options);
+
+			// filter: filtrar elementos de un arreglo a traves de un condicion
+			// map : recorre elemento por elemento de un arreglo haciendo una operacion y formando 
+			// un nuevo arreglo
+			var selectElements = elements.filter(e => e.selected).map(e => [e.value, e.text]);
+
+			console.log(selectElements);
+
+			selectElements.forEach(e => console.log(e));
+		});
+	</script>
+</body>
+</html>

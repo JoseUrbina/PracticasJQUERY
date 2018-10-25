@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Checkbox</title>
+</head>
+<body>
+	<input type="checkbox" name="fruit[]" value="apple"> Apple
+	<input type="checkbox" name="fruit[]" value="banana"> Banana
+	<input type="checkbox" name="fruit[]" value="pear"> Pear
+	<hr>
+	<input type="button" value="Get" id="btnGet">
+	
+	<script>
+		document.getElementById('btnGet').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var check = Array.from(document.querySelectorAll('input[type=checkbox]:checked'));
+
+			var fruits = check.map(element => element.value);
+
+			console.log(fruits);
+		});	
+	</script>
+</body>
+</html>
