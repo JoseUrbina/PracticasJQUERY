@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>New User</title>
+</head>
+<body>
+	<form method="POST">
+		<label>User: <input type="text" name="user" id="user"></label><br><br>
+		<label>Password: <input type="text" name="pwd" id="pwd"></label><br><br>
+		<input type="submit" name="save" value="save" id="btnSave">
+	</form>
+
+	<script>
+		function saveUser(user, pwd)
+		{
+			var request = new XMLHttpRequest();
+			request.open('POST', 'login.php',true);
+			request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+			request.onload = function(){
+				if(request.readyState >= 4 && request.readyState < 200)
+				{
+					var response = JSON.parse(request.responseText);					
+
+					alert(response.message);		
+					
+					if(response.status)
+					{
+						document.getElementById('user').value = "";
+						document.getElementById('pwd').value = "";
+					}	
+				}
+			}
+
+			request.onerror = function(){
+				console.log('Error');
+			}
+
+			request.send("user=" + user + "&pwd=" + pwd);
+		}
+
+		document.getElementById('btnSave').addEventListener('click',function(event){
+			event.preventDefault();
+
+			var user = document.getElementById('user').value;
+			var pwd = document.getElementById('pwd').value;
+
+			saveUser(user, pwd);
+		});
+	</script>
+</body>
+</html>
